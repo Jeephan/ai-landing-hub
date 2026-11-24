@@ -77,21 +77,22 @@ npm run preview
 
 ## 部署
 
-- 平台：静态托管（Cloudflare Pages / Vercel / Netlify 等任意静态站点）
-- 构建命令：`npm run build`
-- 输出目录：`dist`
-- 环境变量：无（当前版本不配置密钥）
+- 平台：Cloudflare Pages · 项目：`ai-landing-hub` · Git 集成（仓库 `Jeephan/ai-landing-hub`，生产分支 `main`）
+- 构建命令：`npm run build` · 输出目录：`dist` · 框架预设：无
+- 环境变量：无（当前版本不配置任何密钥 / 连接串）
 - SPA 兜底：产物已带 `_redirects`（`/* /index.html 200`）与 `404.html`
+- 云端构建环境：Node 22 / npm 10（零运行时依赖，无需 lockfile 安装第三方包）
 
 ### 域名
 
-- 默认使用托管平台分配的免费二级域名（如 `*.pages.dev` / `*.vercel.app`）。
-- 绑定自定义域名时，在平台侧添加域名并按提示配置 CNAME；证书由平台自动签发。
+- 主域：https://ai-landing-hub.pages.dev （Cloudflare 免费二级域名，TLS 由平台自动签发）
+- 部署预览：每次提交生成独立 `https://<hash>.ai-landing-hub.pages.dev` 预览地址
+- 绑定自定义域名：在 Pages 项目 → Domains 添加域名，按提示配置 CNAME / 子域；证书由平台自动签发。
 
 ### 回滚
 
-- 代码：`git revert <sha>` 触发重新部署；
-- 平台：在部署记录中选择上一个可用版本 Promote。
+- 代码：`git revert <sha>` 推送到 `main` 触发自动重新部署；
+- 平台：Cloudflare Pages 部署记录中选择上一个可用版本 Promote 为生产环境。
 
 ## 路线图
 
