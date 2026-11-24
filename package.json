@@ -1,0 +1,15 @@
+{
+  "name": "ai-landing-hub",
+  "version": "1.0.0",
+  "private": false,
+  "description": "开源免费的 AI 落地对接平台：需求方公开招标，开发者与机构展示档案与案例",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/preview.mjs"
+  },
+  "license": "MIT"
+}
