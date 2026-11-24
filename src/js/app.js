@@ -4,6 +4,7 @@
 
 import { el, icon } from "./ui.js";
 import { registerRoute, startRouter, currentSection } from "./router.js";
+import { getTheme, toggleTheme } from "./theme.js";
 import { renderHome } from "./pages/home.js";
 import { renderProjects } from "./pages/projects.js";
 import { renderProjectDetail } from "./pages/project-detail.js";
@@ -34,6 +35,21 @@ function buildNav() {
     on: { click: () => drawer.classList.toggle("open") }
   }, el("span"));
 
+  const themeBtn = el("button", {
+    class: "theme-toggle",
+    type: "button",
+    "aria-label": "切换深色 / 浅色模式",
+    title: "切换深色 / 浅色模式",
+    "aria-pressed": getTheme() === "dark",
+    on: {
+      click: () => {
+        const t = toggleTheme();
+        themeBtn.setAttribute("aria-pressed", t === "dark");
+        themeBtn.innerHTML = icon(t === "dark" ? "sun" : "moon");
+      }
+    }
+  }, icon(getTheme() === "dark" ? "sun" : "moon"));
+
   const nav = el("nav", { class: "nav" }, [
     el("div", { class: "container nav-inner" }, [
       el("a", { class: "brand", href: "#/" }, [
@@ -42,6 +58,7 @@ function buildNav() {
       ]),
       drawer,
       el("div", { class: "nav-actions" }, [
+        themeBtn,
         el("a", { class: "btn btn-outline btn-sm", href: "#/join" }, "开发者入驻"),
         el("a", { class: "btn btn-primary btn-sm", href: "#/post" }, "发布需求"),
         toggle

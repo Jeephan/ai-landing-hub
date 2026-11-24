@@ -48,6 +48,41 @@
   --container: 1180px;
 }
 
+/* ---------- 深色模式 ---------- */
+:root { color-scheme: light; }
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0e1018;
+  --surface: #171a26;
+  --surface-2: #1f2333;
+  --surface-3: #282d40;
+  --text: #eceef6;
+  --text-2: #b6bccd;
+  --text-3: #8a90a8;
+  --border: #262b3d;
+  --border-strong: #353b52;
+
+  --primary: #818cf8;
+  --primary-dark: #a5b0fc;
+  --primary-soft: #262a45;
+  --success: #34d399;
+  --success-soft: #14332a;
+  --warn: #fbbf24;
+  --warn-soft: #3a2c14;
+  --danger: #f87171;
+  --danger-soft: #3d1d1f;
+
+  --grad-soft: linear-gradient(135deg, #1c1f33 0%, #221d33 55%, #16282e 100%);
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-s: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-m: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-l: 0 20px 48px rgba(99, 102, 241, 0.22);
+}
+
+body { transition: background-color 0.2s ease, color 0.2s ease; }
+
 /* ---------- 基础 ---------- */
 *,
 *::before,
@@ -168,6 +203,26 @@ p { margin: 0 0 1em; }
 .nav-links a.active { color: var(--primary-dark); background: var(--primary-soft); }
 
 .nav-actions { display: flex; align-items: center; gap: 10px; }
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-s);
+  border: 1px solid var(--border-strong);
+  background: var(--surface);
+  color: var(--text-2);
+  cursor: pointer;
+  transition: color 0.16s, border-color 0.16s, background 0.16s;
+}
+.theme-toggle:hover {
+  color: var(--primary-dark);
+  border-color: var(--primary);
+  background: var(--surface-2);
+}
+.theme-toggle svg { width: 18px; height: 18px; }
 
 .nav-toggle {
   display: none;
@@ -667,6 +722,7 @@ a.chip:hover { border-color: var(--primary); color: var(--primary-dark); backgro
   color: #c6cadd;
   padding: 48px 0 28px;
 }
+:root[data-theme="dark"] .footer { background: #12151f; }
 .footer-grid {
   display: grid;
   grid-template-columns: 1.6fr 1fr 1fr 1fr;
